@@ -10,11 +10,21 @@ android {
         applicationId "com.lingong.demo"
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
+        versionCode 1000001
+        versionName "1.0.0.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
+    signingConfigs {
+        config {
+            keyAlias 'zeasn'
+            keyPassword '123456'
+            storeFile file("../whaleTV.jks")
+            storePassword '123456'
+        }
+    }
+
 
     buildTypes {
         release {
@@ -26,6 +36,17 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            outputFileName = "DemoTest-_${buildType.name}_${defaultConfig.versionName}.apk"
+        }
+    }
+
 }
 
 dependencies {

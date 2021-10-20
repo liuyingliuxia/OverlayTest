@@ -4,12 +4,23 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 
-public class MainActivity extends Activity {
+import com.lingong.demo.databinding.ActivityMainBinding;
+
+import java.util.Locale;
+import java.util.logging.Logger;
+
+public class MainActivity extends AppCompatActivity {
+
+
+    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        Log.d("main", "language = " + Locale.getDefault().getLanguage());
     }
 }
